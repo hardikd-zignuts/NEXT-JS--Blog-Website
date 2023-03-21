@@ -1,10 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import Script from 'next/script'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import Script from "next/script";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -15,75 +16,91 @@ export default function Home() {
         <meta name="keywords" content="blog,blog spot" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Script id='script1' src='/seo.js' strategy='lazyOnload'>
-        {console.log('custom script inner part')}
+      <Script id="script1" src="/seo.js" strategy="lazyOnload">
+        {console.log("custom script inner part")}
       </Script>
       <main className={styles.main}>
+        <nav>
+          <ul>
+            <li>
+              <Link href='/'>Home</Link>
+            </li>
+            <li>
+              <Link href='/about'>About</Link>
+            </li>
+            <li>
+              <Link href='/contact'>Contact</Link>
+            </li>
+            <li>
+              <Link href='/blog'>Blogs</Link>
+            </li>
+          </ul>
+        </nav>
 
-
-        <div className={styles.center}>
-          <h1>Hunting Coders</h1>
-        </div>
-
+        <h1>Hunting Coders</h1>
+        <hr className={styles.lines} />
+        <h2>Popular Blogs</h2>
         <div className={styles.grid}>
+
           <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="#"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
+              Javascript Libraies in 2023 <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
+              List of amazing javascript libraies, let explore&nbsp; together  in 2023
             </p>
           </a>
 
           <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="#"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
+              Javascript Libraies in 2023 <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
+              List of amazing javascript libraies, let explore&nbsp; together  in 2023
             </p>
           </a>
 
           <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="#"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
+              Javascript Libraies in 2023 <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
+              List of amazing javascript libraies, let explore&nbsp; together  in 2023
             </p>
           </a>
 
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="#"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
+              Javascript Libraies in 2023 <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
+              List of amazing javascript libraies, let explore&nbsp; together  in 2023
             </p>
           </a>
+
+
         </div>
       </main>
     </>
-  )
+  );
 }
