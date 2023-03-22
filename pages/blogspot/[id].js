@@ -1,14 +1,23 @@
+import axios from 'axios';
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Post = () => {
-    const { id } = useRouter().query
+    const [blog, setBlog] = useState([]);
+    const router = useRouter();
+    useEffect(() => {
+        if (!router.isReady) return;
+        const { id } = router.query
+        axios
+            .get(`http://localhost:3000/api/getBlog?slug=${id}`)
+            .then((res) => setBlog(res.data));
+    }, [router.isReady,router]);
 
     return (
         <div className='text-center w-75 mx-auto'>
-            <h1>{id}</h1>
+            <h1>{blog.title}</h1>
             <hr />
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, facilis iure a quis excepturi optio totam magni eveniet, beatae commodi eos neque, eum expedita veniam exercitationem earum doloribus adipisci dicta? Natus eum cum in voluptates eligendi sint? Possimus, minus similique?</p>
+            <p>{blog.content}</p>
         </div>
     )
 }
