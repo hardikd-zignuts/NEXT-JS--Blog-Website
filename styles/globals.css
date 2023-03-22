@@ -36,6 +36,8 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+@import url('bootstrap/dist/css/bootstrap.min.css');
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -69,7 +71,7 @@ body {
   height: 100vh;
   overflow-x: hidden;
   font-family: '__Inter_4b5723', '__Inter_Fallback_4b5723' !important;
-  background-color: #313131;
+  /* background-color: #313131; */
   /* color: black !important; */
 }
 

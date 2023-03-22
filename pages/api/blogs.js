@@ -1,11 +1,15 @@
 import * as fs from 'fs'
-export default function handler(req, res) {
 
-    fs.readFile(`blogdata/${req.query.slug}.json`, 'utf-8', (err, data) => {
-        if (err) {
-            res.status(500).json({ 'error': 'No Blog Found' })
-        }
-        res.status(200).json({ name: JSON.parse(data) })
-    })
+
+
+export default async function handler(req, res) {
+    let allBlogs = []
+
+    const blogDir = await fs.promises.readdir('blogdata', 'utf-8')
+    for (let index = 0; index < blogDir.length; index++) {
+        const element = await fs.promises.readFile('blogdata/' + blogDir[index], 'utf-8')
+        allBlogs.push(JSON.parse(element))
+    }
+    res.send(allBlogs)
 }
 
