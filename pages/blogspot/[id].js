@@ -3,18 +3,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
-const Post = () => {
-    const [blog, setBlog] = useState([]);
-    const [src, setsrc] = useState('https://source.unsplash.com/1920x1080/?computer,laptop');
-    const router = useRouter();
-    useEffect(() => {
-        if (!router.isReady) return;
-        const id = router.query.id
-        setsrc('https://source.unsplash.com/1920x1080/?computer,laptop')
-        axios
-            .get(`http://localhost:3000/api/getBlog?slug=${id}`)
-            .then((res) => setBlog(res.data));
-    }, [router.isReady, router]);
+const Post = (props) => {
+    const [blog, setBlog] = useState(props.myBlog);
 
     return (
         <div className='text-center w-75 mx-auto'>
@@ -24,7 +14,7 @@ const Post = () => {
             <small><i>-by {blog && blog.author}</i></small>
             <div >
                 <Image
-                    src={src}
+                    src={'https://source.unsplash.com/1920x1080/?computer,laptop'}
                     alt='blog-image'
                     width={500}
                     height={400}
@@ -33,5 +23,15 @@ const Post = () => {
         </div>
     )
 }
+
+export async function getServerSideProps(context) {
+    const data = await axios.get(`http://localhost:3000/api/getBlog?slug=${context.query.id}`)
+    const myBlog = data.data
+
+    return {
+        props: { myBlog },
+    }
+}
+
 
 export default Post
