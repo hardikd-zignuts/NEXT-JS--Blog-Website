@@ -1,0 +1,6 @@
+{
+  "title": "React Libraies 2023",
+  "content": "React has been around for a while. Since then, a well-rounded yet overwhelming ecosystem of libraries evolved around the component driven library. Developers coming from other programming languages or libraries/frameworks often have a hard time figuring out all the libraries for creating web applications with React. At its core, React enables one to create component-driven user interfaces with function components. It comes with a couple of built-in solutions though, for instance, React Hooks for local state, side-effects, and performance optimizations. But after all, you are only dealing with functions to create a UI here.",
+  "author": "Hardik D",
+  "slug": "react-framework-2023"
+}

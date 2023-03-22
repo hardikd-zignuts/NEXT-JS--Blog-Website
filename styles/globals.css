@@ -76,8 +76,14 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
+  background: linear-gradient(to right, #272727bc, #27272744), url('https://source.unsplash.com/1920x1080/?computer,website,laptop') center center !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
+
+#__next {}
 
 a {
   color: inherit;
