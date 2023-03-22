@@ -1,9 +1,9 @@
-import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import * as fs from 'fs'
 
 const Blog = (props) => {
-  const [blogs, setBlogs] = useState(props.allBlogs);
+  const [blogs] = useState(props.allBlogs);
 
   return (
     <>
@@ -30,12 +30,22 @@ const Blog = (props) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const data = await axios.get("http://localhost:3000/api/blogs")
-  const allBlogs = data.data
-
+export async function getStaticProps(context) {
+  const data = await fs.promises.readdir('blogdata')
+  let allBlogs = []
+  for (let index = 0; index < data.length; index++) {
+    const element = await fs.promises.readFile('blogdata/' + data[index], 'utf-8')
+    allBlogs.push(JSON.parse(element))
+  }
   return {
-    props: {allBlogs},
+    props: { allBlogs },
   }
 }
+// export async function getServerSideProps(context) {
+//   const data = await axios.get("http://localhost:3000/api/blogs")
+//   const allBlogs = data.data
+//   return {
+//     props: { allBlogs },
+//   }
+// }
 export default Blog;
