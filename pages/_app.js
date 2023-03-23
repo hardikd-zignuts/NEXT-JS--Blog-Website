@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Appbar from '@/components/Appbar'
 import '@/styles/globals.css'
+import { Toaster } from 'react-hot-toast';
 
 
 export default function App({ Component, pageProps }) {
@@ -8,6 +9,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Appbar />
       <Component {...pageProps} />
+      <Toaster />
     </>
   )
 }
